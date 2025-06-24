@@ -19,7 +19,7 @@ Direction directions[] = {
     {1, 1}, {1, -1}, {-1, 1}, {-1, -1}
 };
 
-int is_valid_position(int x, int y, int dx, int dy, const char* word) {
+int is_valid_position(int x, int y, int dx, int dy, const char* word) {    //To be continued
     int len = strlen(word);
     for (int i = 0; i < len; i++) {
         int nx = x + dx * i;
