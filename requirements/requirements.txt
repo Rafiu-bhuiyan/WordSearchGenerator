@@ -1,1 +1,14 @@
 
+            Here is the list of necessary tools needed for the project:
+
+ Need:                       Tool/Library:
+
+ input/output                stdio.h
+
+ Randomization               stdib.h,time.h
+
+ strings                     string.h,ctype.h
+
+ Compiler                    GCC,clang,etc
+ 
+ IDE(optional)               Code::Blocks, VS code,etc
