@@ -1,4 +1,6 @@
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include <ctype.h>
 
@@ -62,3 +64,87 @@ void place_word(const char* word) {
         printf("Could not place word: %s\n", word);
     }
 }
+
+void fill_grid() {
+    for (int i = 0; i < GRID_SIZE; i++)
+        for (int j = 0; j < GRID_SIZE; j++)
+            if (grid[i][j] == '.')
+                grid[i][j] = 'A' + rand() % 26;
+}
+
+void print_grid(char matrix[MAX_GRID][MAX_GRID]) {
+    for (int i = 0; i < GRID_SIZE; i++) {
+        for (int j = 0; j < GRID_SIZE; j++) {
+            printf("%c ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void print_solution() {
+    printf("\nSolution Grid (only words shown):\n");
+    for (int i = 0; i < GRID_SIZE; i++) {
+        for (int j = 0; j < GRID_SIZE; j++) {
+            printf("%c ", solution[i][j] ? solution[i][j] : '.');
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    srand(time(NULL));
+    char words[MAX_WORDS][MAX_WORD_LEN];
+    int word_count;
+
+    printf("Enter grid size (max %d): ", MAX_GRID);
+    scanf("%d", &GRID_SIZE);
+    getchar();
+
+    if (GRID_SIZE <= 0 || GRID_SIZE > MAX_GRID) {
+        printf("Invalid grid size.\n");
+        return 1;
+    }
+
+    printf("Enter number of words (max %d): ", MAX_WORDS);
+    scanf("%d", &word_count);
+    getchar();
+
+    if (word_count <= 0 || word_count > MAX_WORDS) {
+        printf("Invalid number of words.\n");
+        return 1;
+    }
+
+    for (int i = 0; i < word_count; i++) {
+        printf("Enter word %d: ", i + 1);
+        fgets(words[i], MAX_WORD_LEN, stdin);
+        words[i][strcspn(words[i], "\n")] = '\0';
+        for (int j = 0; words[i][j]; j++)
+            words[i][j] = toupper(words[i][j]);
+    }
+
+
+    for (int i = 0; i < GRID_SIZE; i++)
+        for (int j = 0; j < GRID_SIZE; j++) {
+            grid[i][j] = '.';
+            solution[i][j] = 0;
+        }
+
+
+    for (int i = 0; i < word_count; i++)
+        place_word(words[i]);
+
+    fill_grid();
+
+    printf("\nWord Search Puzzle:\n");
+    print_grid(grid);
+
+    printf("\nWords to find:\n");
+    for (int i = 0; i < word_count; i++)
+        printf("%s\n", words[i]);
+
+    print_solution();
+
+    return 0;
+}
+
+
