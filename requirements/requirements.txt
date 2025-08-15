@@ -11,4 +11,4 @@
 
  Compiler                    GCC,clang,etc  
  
- IDE(optional)               Code::Blocks, VS code,etc
+ IDE(optional)               Code::Blocks, VS code,Replit etc.
