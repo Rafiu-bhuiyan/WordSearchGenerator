@@ -9,6 +9,6 @@
 
  strings                     string.h,ctype.h
 
- Compiler                    GCC,clang,etc
+ Compiler                    GCC,clang,etc  
  
  IDE(optional)               Code::Blocks, VS code,etc
