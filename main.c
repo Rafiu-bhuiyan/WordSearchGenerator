@@ -12,6 +12,7 @@ char grid[MAX_GRID][MAX_GRID];
 char solution[MAX_GRID][MAX_GRID];
 int GRID_SIZE;
 
+
 typedef struct {
     int dx, dy;
 } Direction;
@@ -40,7 +41,6 @@ int is_valid_position(int x, int y, int dx, int dy, const char* word) {    //To 
 
 
 
-
 void place_word(const char* word) {
     int placed = 0, attempts = 100;
     int len = strlen(word);
@@ -64,6 +64,7 @@ void place_word(const char* word) {
         printf("Could not place word: %s\n", word);
     }
 }
+
 
 void fill_grid() {
     for (int i = 0; i < GRID_SIZE; i++)
@@ -146,6 +147,7 @@ int main() {
 
     return 0;
 }   
+
 
 
 
